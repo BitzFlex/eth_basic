@@ -1,0 +1,31 @@
+동작 OK --------------- 
+
+[ ] Internal EMAC
+[*] SPI Ethernet
+(1)     Number of SPI Ethernet modules to use at a time
+        Ethernet SPI (W5500 Module)  --->
+(1)     SPI Host Number
+(14)    SPI SCLK GPIO number
+(12)    SPI MOSI GPIO number
+(13)    SPI MISO GPIO number
+(12)    SPI clock speed (MHz)
+(25)    SPI CS0 GPIO number for SPI Ethernet module #1
+(4)     Interrupt GPIO number SPI Ethernet module #1
+(-1)    PHY Reset GPIO number of SPI Ethernet Module #1
+(1)     PHY Address of SPI Ethernet Module #1
+
+    * SPI CS0 GPIO number for SPI Ethernet module #1 의 example 초기 값은 15
+
+동작 OK --------------- 
+    위의 config 에서 source code 에서 강제로  PHY Reset GPIO number of SPI Ethernet Module 를 35로 해도 동작
+    spi_eth_module_config[0].int_gpio = 35; // BH
+
+    interrupt GPIO 는 사용하지 않음.
+
+
+동작 안되는 경우 ---------------
+
+    SPI CS0 GPIO number  : 잘못 설정된 경우 Ethernet 은 되지만, Layer 3 은 동작하지 않음. 
+
+
+
